@@ -1,0 +1,1 @@
+Building a customizable password generator in vanilla JavaScript
