@@ -14,6 +14,10 @@ const selectors = {
 	input: document.querySelector('input[type="text"]')
 }
 
+const generatePassword = () => {
+
+}
+
 document.querySelector('#app').addEventListener('click', event => {
 	switch (event.target.dataset.jsSelector) {
 		// Event listener for copy
@@ -23,17 +27,20 @@ document.querySelector('#app').addEventListener('click', event => {
 
 		// Event listeners for checkboxes
 		case selectors.checkbox:
-
-			break;
+			flags[event.target.control.id] = !event.target.control.checked
+		break;
 
 		// Event listeners for slider
 		case selectors.slider:
+			const value = event.target.valueAsNumber
 
-			break;
+			selectors.sliderValue.innerText = value
+			flags.length = value
+		break;
 
 		// Event listener for generate button
 		case selectors.button:
-
-			break;
+			selectors.input.value = generatePassword()
+		break;
 	}
 })
