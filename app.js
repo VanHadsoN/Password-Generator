@@ -22,8 +22,17 @@ document.querySelector('#app').addEventListener('click', event => {
 	switch (event.target.dataset.jsSelector) {
 		// Event listener for copy
 		case selectors.copy:
+			const dummy = document.createElement('textarea');
 
-			break;
+			document.body.appendChild(dummy);
+
+			dummy.value = selectors.input.value;
+			dummy.select();
+
+			document.execCommand('copy');
+			document.body.removeChild(dummy);
+
+		break;
 
 		// Event listeners for checkboxes
 		case selectors.checkbox:
