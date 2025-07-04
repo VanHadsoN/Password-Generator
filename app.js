@@ -15,7 +15,23 @@ const selectors = {
 }
 
 const generatePassword = () => {
+	const defaultCharacters = 'abcdefghijklmnopqrstuvwxyz'
+	const characters = {
+		uppercase: defaultCharacters.toUpperCase(),
+		numbers: '0123456789',
+		symbols: '~!@-#$'
+	}
 
+	const characterList = [
+		defaultCharacters,
+		...flags.uppercase ? characters.uppercase : [],
+		...flags.numbers ? characters.numbers : [],
+		...flags.symbols ? characters.symbols : []
+	].join('')
+
+	return Array.from({ length: flags.length }, () => Math.floor(Math.random() * characterList.length))
+		.map(number => characterList[number])
+		.join('')
 }
 
 document.querySelector('#app').addEventListener('click', event => {
